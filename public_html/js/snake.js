@@ -6,7 +6,9 @@ var screenWidth;
 var screenHeight; 
 
 gameInitialize ();
+snakeInitialize ();
 gameDraw ();
+snakeDraw ();
 
 function gameInitialize(){
    var canvas = document.getElementById ("game-screen"); 
@@ -28,12 +30,21 @@ function gameDraw() {
 }
 function snakeInitialize() {
     snake = []; 
-    snakeLength = 15; 
-    snakeSize = 20; 
+    snakeLength = 5; 
+    snakeSize = 20;
+    for(var index = snakeLength - 1; index >= 0 ;index--) {
+        snake.push({
+            x:index,
+            y:0 
+        }); 
+    }
 }
 
 function snakeDraw() {
-    
+    for(var index = 0; index < snake.length; index++){
+        context.fillStyle = "white";  
+        context.fillRect(snake[index].x *snakeSize, snake[index].y * snakeSize, snakeSize, snakeSize);
+    }
 }
 
 function snakeUpdate() {
